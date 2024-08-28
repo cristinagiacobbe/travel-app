@@ -20,10 +20,12 @@ class TravelSeeder extends Seeder
             $travel->date = $faker->date('Y-m-d');
             $travel->cover_image = $faker->imageUrl(640, 400, 'jpg');
             $travel->description = $faker->paragraphs(5, true);
-            $travel->map_position = $faker->imageUrl(640, 400, 'jpg');
             $travel->valutation = $faker->randomDigit();
             $travel->people = $faker->words(10, true);
             $travel->additional_notes = $faker->paragraphs(3, true);
+            $travel->latitude = $faker->words(1, true);
+            $travel->longitude = $faker->words(1, true);
+            $travel->completed = $faker->boolean();
             $travel->save();
         }
     }

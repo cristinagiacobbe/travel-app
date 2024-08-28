@@ -12,15 +12,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('travel', function (Blueprint $table) {
-            $table->id('day_number');
+            $table->id('stage_number');
             $table->string('title', 200);
             $table->date('date');
             $table->string('cover_image')->nullable();
             $table->text('description')->nullable();
-            $table->string('map_position')->nullable;
-            $table->tinyInteger('valutation')->nullable;
-            $table->string('people')->nullable;
-            $table->text('additional_notes', 500)->nullable;
+            $table->tinyInteger('valutation')->nullable();
+            $table->string('people')->nullable();
+            $table->text('additional_notes', 500)->nullable();
+            $table->boolean('completed');
+            $table->string('latitude');
+            $table->string('longitude');
             $table->timestamps();
         });
     }

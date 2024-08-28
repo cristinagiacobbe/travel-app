@@ -14,7 +14,8 @@ class TravelController extends Controller
      */
     public function index()
     {
-        dd(Travel::all());
+        $travels = Travel::orderByDesc('stage_number')->paginate(10);
+        return view('admin.index', compact('travels'));
     }
 
     /**

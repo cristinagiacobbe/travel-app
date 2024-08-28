@@ -9,7 +9,7 @@ nome repo: travel-app
 - Per la visualizzazione delle mappe all'interno della mia app ho scelto LEAFLET.
 - Poichè questo servizio è facilmente riproducibile utilizzando un file Javascript (non so se lo sia anche con PHP, mi riserverò di approfondire), 
 per questa parte utilizzerò il linguaggio front-end JAVASCRIPT (problema: riuscirò a garantire la persistenza dei dati?)
-- Per la condivisione della app prevedo di utilizzare ...............
+- Per la condivisione della app prevedo di utilizzare NETLIFY (vedi diretta di Filippo app traduttore)
 
 # Struttura della mia applicazione
 - L'applicazione si compone di due parti, una accessibile agli utenti, una accessibile solo all'amministratore.
@@ -25,6 +25,7 @@ per questa parte utilizzerò il linguaggio front-end JAVASCRIPT (problema: riusc
     - Descrizione;
     - Data;
     - Immagine;
+    - Persone (che ho incontrato/conosciuto in questa tappa)
     - Annotazioni;
     - Valutazione: prevedo di inserirla numericamente e di visualizzarla tramite icone (stelle da 1 a 5 vupte/piene a seconda del valore)
     - Fatta/non fatta (per tenere conto della progressione del viaggio; potrebbe essere un campo "check-box")
