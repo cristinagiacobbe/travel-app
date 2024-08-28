@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\TravelController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,13 +25,14 @@ Route::middleware(['auth', 'verified'])
     ->prefix('admin')
     ->group(function () {
         Route::get('/', [DashboardController::class, 'dashboard'])->name('dashboard');
+
+        Route::resource('travels', TravelController::class);
     });
-Route::middleware(['auth', 'verified'])
-    ->name('admin')
-    ->prefix('admin')
-    ->group(function () {
-        Route::get('/', [DashboardController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
-    });
+
+
+
+
+
 
 
 Route::middleware('auth')->group(function () {

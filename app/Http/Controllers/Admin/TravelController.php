@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Travel;
 use App\Http\Requests\StoreTravelRequest;
 use App\Http\Requests\UpdateTravelRequest;
+use App\Http\Controllers\Controller;
 
 class TravelController extends Controller
 {
@@ -13,7 +14,7 @@ class TravelController extends Controller
      */
     public function index()
     {
-        //
+        dd(Travel::all());
     }
 
     /**
