@@ -7,7 +7,8 @@
 
         <div class="table-responsive">
             <table class="table table-primary px-2">
-                {{-- <a class="btn btn-info m-2" href="{{ route('admin.create') }}">Aggiungi una nuova tappa del viaggio</a> --}}
+                <a class="btn btn-info m-2" href="{{ route('admintravels.create') }}">Aggiungi una nuova tappa del
+                    viaggio</a>
                 <thead>
                     <tr>
                         <th scope="col">Tappa n.</th>

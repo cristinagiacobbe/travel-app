@@ -6,6 +6,7 @@ use App\Models\Travel;
 use App\Http\Requests\StoreTravelRequest;
 use App\Http\Requests\UpdateTravelRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class TravelController extends Controller
 {
@@ -23,7 +24,7 @@ class TravelController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.create');
     }
 
     /**
@@ -31,7 +32,15 @@ class TravelController extends Controller
      */
     public function store(StoreTravelRequest $request)
     {
-        //
+        $val_data = $request->validated();
+
+        if ($request->has('cover_image')) {
+            $val_data['cover_image'] = Storage::put('uploads', $request->cover_image);
+        };
+
+        $projects = Travel::create($val_data);
+
+        return to_route('admin.index')->with('message', "Ce l'hai fatta, tappa creata !!😄");
     }
 
     /**
