@@ -66,10 +66,12 @@
                     value="{{ old('longitude') }}" />
             </div>
 
-            <div class="mb-3">
-                <label for="completed" class="form-label"><strong>Tappa completata?</strong></label>
-                <input type="checkbox" {{-- class="form-control @error('longitude')is-invalid @enderror" --}} name="completed" id="completed" {{-- aria-describedby="helpcompleted" placeholder="Clicca qui se hai già percorso la tappa"
-                    value="{{ old('completed') }}" --}} />
+            <div class="mb-3 d-flex gap-3">
+                <div class="form-check ">
+                    <input class="form-check-input" type="checkbox" value="completed" id="completed" name="completed"
+                        {{ old('completed') ? 'checked' : '' }} />
+                    <label class="form-check-label" for="completed">Tappa completata?</label>
+                </div>
             </div>
 
             <button class="btn btn-primary" type="submit">Create</button>

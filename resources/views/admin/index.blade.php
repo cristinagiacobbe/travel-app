@@ -6,7 +6,7 @@
         @include('partials.success')
 
         <div class="table-responsive">
-            <table class="table table-primary px-2">
+            <table class="table table-primary px-3">
                 <a class="btn btn-info m-2" href="{{ route('admintravels.create') }}">Aggiungi una nuova tappa del
                     viaggio</a>
                 <thead>
@@ -45,11 +45,11 @@
                             <td>{{ $travel->longitude }}</td>
                             <td>{{ $travel->completed }}</td>
 
-                            {{-- <td>
-                                <a href="{{ route('admin.show', $travel) }}" class="btn btn-primary ">
+                            <td>
+                                {{-- <a href="{{ route('admin.show', $travel) }}" class="btn btn-primary ">
                                     <i class="fa-solid fa-binoculars"></i>
-                                </a>
-                                <a href="{{ route('admin.edit', $travel) }}" class="btn btn-dark m-1 ">
+                                </a> --}}
+                                <a href="{{ route('admintravels.edit', $travel) }}" class="btn btn-dark m-1 ">
                                     <i class="fa-solid fa-pencil"></i>
                                 </a>
 
@@ -79,7 +79,7 @@
                                                     Close
                                                 </button>
 
-                                                <form action="{{ route('admin.destroy', $travel) }}" method="post">
+                                                <form action="{{ route('admintravels.destroy', $travel) }}" method="post">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger ">Delete</button>
@@ -89,11 +89,7 @@
                                         </div>
                                     </div>
                                 </div>
-
-
-
-
-                            </td> --}}
+                            </td>
                         </tr>
                     @empty
                         <tr class="">

@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('travel', function (Blueprint $table) {
-            $table->id('stage_number');
+            $table->id();
             $table->string('title', 200);
             $table->date('date');
             $table->string('cover_image')->nullable();
@@ -20,7 +20,7 @@ return new class extends Migration
             $table->tinyInteger('valutation')->nullable();
             $table->string('people')->nullable();
             $table->text('additional_notes', 500)->nullable();
-            $table->boolean('completed');
+            $table->boolean('completed')->nullable();
             $table->string('latitude');
             $table->string('longitude');
             $table->timestamps();

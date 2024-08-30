@@ -32,7 +32,7 @@
 <script type="text/javascript">
     console.log("Prova funzionamento");
 
-    var map = L.map('map').setView([41.8992, 12.5450], 13);
+    var map = L.map('map').setView([41.8992, 12.5450], 8);
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,

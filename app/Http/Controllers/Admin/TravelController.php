@@ -15,7 +15,7 @@ class TravelController extends Controller
      */
     public function index()
     {
-        $travels = Travel::orderByDesc('stage_number')->paginate(10);
+        $travels = Travel::orderBy('id')->paginate(10);
         return view('admin.index', compact('travels'));
     }
 
@@ -38,9 +38,15 @@ class TravelController extends Controller
             $val_data['cover_image'] = Storage::put('uploads', $request->cover_image);
         };
 
-        $projects = Travel::create($val_data);
+        if ($request->has('completed')) {
+            $val_data['completed'] = 1;
+        } else {
+            $val_data['completed'] = 0;
+        }
 
-        return to_route('admin.index')->with('message', "Ce l'hai fatta, tappa creata !!😄");
+        $travels = Travel::create($val_data);
+
+        return to_route('admintravels.index')->with('message', "Ce l'hai fatta, tappa creata !!😄");
     }
 
     /**
@@ -48,7 +54,7 @@ class TravelController extends Controller
      */
     public function show(Travel $travel)
     {
-        //
+        return view('admintravels.show', compact('travel'));
     }
 
     /**
@@ -56,7 +62,7 @@ class TravelController extends Controller
      */
     public function edit(Travel $travel)
     {
-        //
+        return view('admin.edit', compact('travel'));
     }
 
     /**
@@ -64,7 +70,19 @@ class TravelController extends Controller
      */
     public function update(UpdateTravelRequest $request, Travel $travel)
     {
-        //
+        if ($request->has('cover_image')) {
+            $val_data['cover_image'] = Storage::put('uploads', $request->cover_image);
+        } else {
+            $val_data['cover_image'] = Storage::put('uploads', $travel->image);
+        }
+
+        if ($request->has('completed')) {
+            $val_data['completed'] = 1;
+        } else {
+            $val_data['completed'] = $travel->completed;
+        }
+        $travel->update($val_data);
+        return to_route('admintravels.index')->with('message', 'Evvai, tappa modificata !😄');
     }
 
     /**
@@ -72,6 +90,11 @@ class TravelController extends Controller
      */
     public function destroy(Travel $travel)
     {
-        //
+        if ($travel->cover_image) {
+            Storage::delete($travel->cover_image);
+        }
+
+        $travel->delete();
+        return to_route('admintravels.index')->with('message', 'Tappa definitivamente rimossa😒');
     }
 }
