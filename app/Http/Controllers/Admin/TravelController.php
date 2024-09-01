@@ -54,7 +54,7 @@ class TravelController extends Controller
      */
     public function show(Travel $travel)
     {
-        return view('admintravels.show', compact('travel'));
+        return view('admin.show', compact('travel'));
     }
 
     /**

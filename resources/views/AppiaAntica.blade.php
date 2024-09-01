@@ -18,17 +18,45 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
         <!-- Usando Vite -->
-        @vite(['resources/js/app.js'])
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
 
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
             integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 
         <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
             integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
     </head>
 
     <body>
-        <div id="map" class="mx-auto mt-4" style="width: 1200px; height: 500px">
+        <div id="map" class="mx-auto mt-4" style="width: 1200px; height: 500px"></div>
+
+        <div class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Modal body text goes here.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mx-auto">
+            {{-- <h5><a href="{{ route('admintravels.show', $travel) }}">Tappa 1</a></h5> --}}
+            <h5>Tappa 2</h5>
+            <h5>Tappa 3</h5>
+            <h5>Tappa 4</h5>
+            <h5>Tappa 5</h5>
         </div>
     </body>
     <script type="text/javascript">
@@ -58,6 +86,8 @@
 
         map.on('click', onMapClick);
     </script>
+
+
 
     </html>
 @endsection

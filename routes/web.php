@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\Admin\AppiaController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\TravelController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Travel;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +22,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/appia', function () {
-    return view('AppiaAntica');
-})->name('appia');
+Route::get('/appia', [AppiaController::class, 'index'])->name('appia');
+Route::get('/appia/{travel}', [AppiaController::class, 'show'])->name('appia.show');
 
 Route::middleware(['auth', 'verified'])
     ->name('admin')

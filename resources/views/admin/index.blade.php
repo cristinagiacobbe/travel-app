@@ -46,7 +46,7 @@
                             <td>{{ $travel->completed }}</td>
 
                             <td>
-                                {{-- <a href="{{ route('admin.show', $travel) }}" class="btn btn-primary ">
+                                {{-- <a href="{{ route('admintravels.show', $travel) }}" class="btn btn-primary ">
                                     <i class="fa-solid fa-binoculars"></i>
                                 </a> --}}
                                 <a href="{{ route('admintravels.edit', $travel) }}" class="btn btn-dark m-1 ">
