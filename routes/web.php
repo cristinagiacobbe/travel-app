@@ -20,6 +20,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/appia', function () {
+    return 'pagina mappa Appia antica';
+})->name('appia');
+
 Route::middleware(['auth', 'verified'])
     ->name('admin')
     ->prefix('admin')

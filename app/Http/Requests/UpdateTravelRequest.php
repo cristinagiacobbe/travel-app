@@ -11,7 +11,7 @@ class UpdateTravelRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,16 @@ class UpdateTravelRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => 'required|min:2|max:50',
+            'date' => 'nullable|date',
+            'cover_image' => 'nullable|image',
+            'description' => 'nullable',
+            'valutation' => 'nullable|numeric|max:5',
+            'people' => 'nullable',
+            'additional_notes' => 'nullable',
+            'latitude' => 'required',
+            'longitude' => 'required',
+            'completed' => 'nullable'
         ];
     }
 }

@@ -73,7 +73,7 @@ class TravelController extends Controller
         if ($request->has('cover_image')) {
             $val_data['cover_image'] = Storage::put('uploads', $request->cover_image);
         } else {
-            $val_data['cover_image'] = Storage::put('uploads', $travel->image);
+            $val_data['cover_image'] = Storage::put('uploads', $travel->cover_image);
         }
 
         if ($request->has('completed')) {

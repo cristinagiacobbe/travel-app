@@ -33,3 +33,8 @@ per questa parte utilizzerò il linguaggio front-end JAVASCRIPT (problema: riusc
 
 # Funzionalità per tenere traccia della progressione delle tappe del tuo viaggio (anche quando chiudi la pagina).
 - Un'ipotesi è sfruttare l'opacità delle immagini (opaca per le tappe non ancora percorse e nitida per le tappe concluse)
+Il campo "completed" mi aiuterà a distinguere le tappe concluse da quelle ancora da percorrere.
+
+# Parti da sistemare/risolvere
+- Quando cancello una tappa, come faccio a far ripartire l'id da 1?
+- Poteva essere utile il campo "Km fatti" e quello "ristoranti tipici"?
