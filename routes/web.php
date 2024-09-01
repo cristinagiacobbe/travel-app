@@ -21,7 +21,7 @@ Route::get('/', function () {
 });
 
 Route::get('/appia', function () {
-    return 'pagina mappa Appia antica';
+    return view('AppiaAntica');
 })->name('appia');
 
 Route::middleware(['auth', 'verified'])

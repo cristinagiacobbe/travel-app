@@ -61,7 +61,7 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav ml-auto text-bg-dark">
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
