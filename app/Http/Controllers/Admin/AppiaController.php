@@ -15,7 +15,7 @@ class AppiaController extends Controller
     }
 
 
-    public function show(TRavel $travel)
+    public function show(Travel $travel)
     {
         return view('admin.show', compact('travel'));
     }

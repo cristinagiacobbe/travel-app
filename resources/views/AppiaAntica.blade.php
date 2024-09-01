@@ -29,34 +29,36 @@
     </head>
 
     <body>
-        <div id="map" class="mx-auto mt-4" style="width: 1200px; height: 500px"></div>
+        <div class="container">
+            <div id="map" class="mt-4" style="width: 1200px; height: 500px"></div>
 
-        <div class="modal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Modal title</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Modal body text goes here.</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <div class="modal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Modal body text goes here.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="mx-auto">
-            {{-- <h5><a href="{{ route('admintravels.show', $travel) }}">Tappa 1</a></h5> --}}
-            <h5>Tappa 2</h5>
-            <h5>Tappa 3</h5>
-            <h5>Tappa 4</h5>
-            <h5>Tappa 5</h5>
+            @foreach ($travels as $travel)
+                <ul class="mt-2">
+                    <li>
+                        <a href="{{ route('appia.show', $travel) }}">{{ $travel->id }}: {{ $travel->title }}</a>
+                    </li>
+                </ul>
+            @endforeach
         </div>
     </body>
     <script type="text/javascript">
@@ -80,7 +82,7 @@
             popup
                 .setLatLng(e.latlng)
                 .setContent("You clicked the map at " + e.latlng.toString())
-                /* .setContent("Tappa n.1. Qui sei a Roma") */
+                /* .setContent("Tappa n.1. Qui sei a...") */
                 .openOn(map);
         }
 
