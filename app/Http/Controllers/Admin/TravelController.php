@@ -39,9 +39,9 @@ class TravelController extends Controller
         };
 
         if ($request->has('completed')) {
-            $val_data['completed'] = 1;
+            $val_data['completed'] = '1';
         } else {
-            $val_data['completed'] = 0;
+            $val_data['completed'] = '0';
         }
 
         $travels = Travel::create($val_data);
@@ -77,7 +77,7 @@ class TravelController extends Controller
         }
 
         if ($request->has('completed')) {
-            $val_data['completed'] = 1;
+            $val_data['completed'] = '1';
         } else {
             $val_data['completed'] = $travel->completed;
         }

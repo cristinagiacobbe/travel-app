@@ -69,24 +69,43 @@
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
 
-        var marker = L.marker([41.890210, 12.492231]).addTo(map); /* Roma */
-        var marker = L.marker([41.87082985, 12.501164662]).addTo(map); /* Porta San Sebastiano */
-        var marker = L.marker([41.6729700, 12.6940300]).addTo(map); /* Lanuvio */
-        var marker = L.marker([41.55, 12.983333]).addTo(map); /* Sermoneta */
-        var marker = L.marker([41.283333, 13.25]).addTo(map); /* Terracina */
-        var marker = L.marker([41.2636741, 13.4271414]).addTo(map); /* Sperlonga */
-
-        var popup = L.popup();
+        /* var marker = L.marker([41.890210, 12.492231]).addTo(map); */
+        /* Roma */
+        /* var marker = L.marker([41.87082985, 12.501164662]).addTo(map); */
+        /* Porta San Sebastiano */
+        /* var marker = L.marker([41.55, 12.983333]).addTo(map); */
+        /* Sermoneta */
+        /* var marker = L.marker([41.283333, 13.25]).addTo(map); */
+        /* Terracina */
+        /* var marker = L.marker([41.2636741, 13.4271414]).addTo(map); */
+        /* Sperlonga */
 
         function onMapClick(e) {
-            popup
-                .setLatLng(e.latlng)
-                .setContent("You clicked the map at " + e.latlng.toString())
-                /* .setContent("Tappa n.1. Qui sei a...") */
-                .openOn(map);
-        }
+            console.log(e);
 
-        map.on('click', onMapClick);
+            alert("You clicked the map at " + e.latlng);
+        };
+
+        @foreach ($travels as $travel)
+            if ({{ $travel->completed = 0 }}) {
+                var circle = L.circle([{{ $travel->latitude }}, {{ $travel->longitude }}], {
+                    color: 'red',
+                    /* fillColor: '#f03', */
+                    fillOpacity: 0.6,
+                    radius: 5000
+                }).addTo(map);
+            } else {
+                var circle = L.circle([{{ $travel->latitude }}, {{ $travel->longitude }}], {
+                    color: 'green',
+                    /* fillColor: '#f03', */
+                    fillOpacity: 0.6,
+                    radius: 5000
+                }).addTo(map); //l'espressione condizionale non funziona correttamente
+            }
+
+            /* circle.bindPopup("Tappa n." + {{ $travel->title }})         NON FUNZIONA */
+            map.on('click', onMapClick);
+        @endforeach
     </script>
 
 

@@ -17,15 +17,23 @@
                 e-bike.
                 Spero possa esserti di ispirazione !! 😉
             </p>
-            <a href="{{ route('appia') }}">La Via Appia antica (Roma) </a>
+            <ul>
+                <li>
+                    <a href="{{ route('appia') }}">La Via Appia antica (Roma) </a>
+                </li>
+                <li>
+                    <p class="text-dark">Tour nelle Langhe</p>
+                </li>
+                <li>
+                    <p class="text-dark">Tour Dela del Po</p>
+                </li>
+            </ul>
         </div>
     </div>
 
     <div class="content">
         <div class="container">
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempora temporibus, dicta nemo aliquam totam nisi
-                deserunt soluta quas voluptatum ab beatae praesentium necessitatibus minus, facilis illum rerum officiis
-                accusamus dolores!</p>
+            <p>Realizzato da Cristina Giacobbe - Boolean's student</p>
         </div>
     </div>
 @endsection

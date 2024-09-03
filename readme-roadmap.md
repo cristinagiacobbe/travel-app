@@ -37,8 +37,6 @@ Il campo "completed" mi aiuterà a distinguere le tappe concluse da quelle ancor
 
 # Parti da sistemare/risolvere
 - Quando cancello una tappa, come faccio a far ripartire l'id da 1?
-- Poteva essere utile il campo "Km fatti" e quello "ristoranti tipici"?
 - Aprire la modale dal marker sulla mappa
-- Gestire l'opacità sulla mappa e/o sulla modale
-- Rendere dinamiche le tappe sulla mappa (non inserire lat/long sul file js ma fare un ciclo che recuperi i valori dall'oggetto travel)
-- sostituire il valore 0/1 nel campo "complted" con si/no
+- Gestire l'opacità sulla mappa e/o sulla modale per distinguere le tappe fatte da quelle da fare (non sono riuscita)
+- sostituire il valore 0/1 nel campo "complted" con si/no (non sono riuscita)
