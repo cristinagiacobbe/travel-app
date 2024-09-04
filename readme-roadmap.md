@@ -37,6 +37,6 @@ Il campo "completed" mi aiuterà a distinguere le tappe concluse da quelle ancor
 
 # Parti da sistemare/risolvere
 - Quando cancello una tappa, come faccio a far ripartire l'id da 1?
-- Aprire la modale dal marker sulla mappa
+- Aprire la modale dal marker sulla mappa: sono riuscita. Devo ancora inserire dinamicamente i valori della singola tappa in ciascuna modale
 - Gestire l'opacità sulla mappa e/o sulla modale per distinguere le tappe fatte da quelle da fare (non sono riuscita)
 - sostituire il valore 0/1 nel campo "complted" con si/no (non sono riuscita)

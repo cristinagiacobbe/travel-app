@@ -12,6 +12,9 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
+        {{-- Ho visto un esempio con tailwind, quindi per ora uso questo --}}
+        <script src="https://cdn.tailwindcss.com"></script>
+
 
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -32,24 +35,15 @@
         <div class="container">
             <div id="map" class="mt-4" style="width: 1200px; height: 500px"></div>
 
-            <div class="modal" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Modal title</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <p>Modal body text goes here.</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
+            {{-- Modale --}}
+            <div id="modal" class="w-[500px] h-[500px] bg-white rounded-xl p-3 hidden">
+                <button id="close-modal" class="float-right">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                    </svg>
+                </button>
+                <h1></h1>
             </div>
 
             @foreach ($travels as $travel)
@@ -80,11 +74,20 @@
         /* var marker = L.marker([41.2636741, 13.4271414]).addTo(map); */
         /* Sperlonga */
 
-        function onMapClick(e) {
-            console.log(e);
+        const openModalMap = document.getElementById("map")
+        const closeModalBtn = document.getElementById("close-modal")
+        const modal = document.getElementById("modal")
 
-            alert("You clicked the map at " + e.latlng);
-        };
+        function openModal() {
+            console.log("apro Modal");
+            modal.classList.remove("hidden")
+        }
+
+        function closeModal() {
+            console.log("chiudo Modal");
+            modal.classList.add("hidden")
+        }
+
 
         @foreach ($travels as $travel)
             if ({{ $travel->completed = 0 }}) {
@@ -103,8 +106,8 @@
                 }).addTo(map); //l'espressione condizionale non funziona correttamente
             }
 
-            /* circle.bindPopup("Tappa n." + {{ $travel->title }})         NON FUNZIONA */
-            map.on('click', onMapClick);
+            openModalMap.addEventListener("click", openModal)
+            closeModalBtn.addEventListener("click", closeModal)
         @endforeach
     </script>
 
