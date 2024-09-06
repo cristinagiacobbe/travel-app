@@ -12,8 +12,8 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
-        {{-- Ho visto un esempio con tailwind, quindi per ora uso questo --}}
-        <script src="https://cdn.tailwindcss.com"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
 
         <!-- Fonts -->
@@ -32,18 +32,19 @@
     </head>
 
     <body>
-        <div class="container">
-            <div id="map" class="mt-4" style="width: 1200px; height: 500px"></div>
 
-            {{-- Modale --}}
-            <div id="modal" class="w-[500px] h-[500px] bg-white rounded-xl p-3 hidden">
-                <button id="close-modal" class="float-right">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="size-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-                    </svg>
-                </button>
-                <h1></h1>
+        <div class="container">
+            <h1>Mappa di Roma</h1>
+
+            {{-- Mi creo a mano una simil-modale con display none --}}
+            <div class="position-relative">
+                <div id="modal" style="width: 200px; height:200px;"
+                    class="bg-secondary text-white d-none position-absolute top-50 start-50 translate-middle z-1">
+                    Modale artigianale
+                    <button>Chiudi</button>
+                </div>
+
+                <div id="map" class="mt-4 z-0" style="width: 1200px; height: 500px"></div>
             </div>
 
             @foreach ($travels as $travel)
@@ -55,6 +56,11 @@
             @endforeach
         </div>
     </body>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
+
     <script type="text/javascript">
         var map = L.map('map').setView([41.8992, 12.5450], 8);
 
@@ -63,51 +69,22 @@
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
 
-        /* var marker = L.marker([41.890210, 12.492231]).addTo(map); */
-        /* Roma */
-        /* var marker = L.marker([41.87082985, 12.501164662]).addTo(map); */
-        /* Porta San Sebastiano */
-        /* var marker = L.marker([41.55, 12.983333]).addTo(map); */
-        /* Sermoneta */
-        /* var marker = L.marker([41.283333, 13.25]).addTo(map); */
-        /* Terracina */
-        /* var marker = L.marker([41.2636741, 13.4271414]).addTo(map); */
-        /* Sperlonga */
-
-        const openModalMap = document.getElementById("map")
-        const closeModalBtn = document.getElementById("close-modal")
         const modal = document.getElementById("modal")
 
         function openModal() {
-            console.log("apro Modal");
-            modal.classList.remove("hidden")
-        }
+            modal.classList.remove("d-none")
 
-        function closeModal() {
-            console.log("chiudo Modal");
-            modal.classList.add("hidden")
         }
-
 
         @foreach ($travels as $travel)
-            if ({{ $travel->completed = 0 }}) {
-                var circle = L.circle([{{ $travel->latitude }}, {{ $travel->longitude }}], {
-                    color: 'red',
-                    /* fillColor: '#f03', */
-                    fillOpacity: 0.6,
-                    radius: 5000
-                }).addTo(map);
-            } else {
-                var circle = L.circle([{{ $travel->latitude }}, {{ $travel->longitude }}], {
-                    color: 'green',
-                    /* fillColor: '#f03', */
-                    fillOpacity: 0.6,
-                    radius: 5000
-                }).addTo(map); //l'espressione condizionale non funziona correttamente
-            }
 
-            openModalMap.addEventListener("click", openModal)
-            closeModalBtn.addEventListener("click", closeModal)
+            var circle = L.circle([{{ $travel->latitude }}, {{ $travel->longitude }}], {
+                color: 'red',
+                /* fillColor: '#f03', */
+                fillOpacity: 0.6,
+                radius: 5000
+            }).addTo(map);
+            circle.bindPopup(openModal);
         @endforeach
     </script>
 
