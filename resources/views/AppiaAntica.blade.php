@@ -36,12 +36,35 @@
         <div class="container">
             <h1>Mappa di Roma</h1>
 
-            {{-- Mi creo a mano una simil-modale con display none --}}
+
             <div class="position-relative">
-                <div id="modal" style="width: 200px; height:200px;"
-                    class="bg-secondary text-white d-none position-absolute top-50 start-50 translate-middle z-1">
-                    Modale artigianale
-                    <button>Chiudi</button>
+
+                <!-- Modal trigger button -->
+                <button id="modalBtn" onclick="closeBtn()" type="button"
+                    class="btn btn-primary btn-lg d-none position-absolute top-50 start-50 translate-middle z-1"
+                    data-bs-toggle="modal" data-bs-target="#modalId">
+                    Visualizza dettagli della tappa
+                </button>
+
+                <!-- Modal Body -->
+                <div class="modal fade" id="modalId" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+                    role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalTitleId">
+                                    Title
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">Body</div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                    Close
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div id="map" class="mt-4 z-0" style="width: 1200px; height: 500px"></div>
@@ -69,11 +92,15 @@
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
 
-        const modal = document.getElementById("modal")
+        const ElModalBtn = document.getElementById("modalBtn")
 
-        function openModal() {
-            modal.classList.remove("d-none")
+        function openBtn() {
+            ElModalBtn.classList.remove("d-none")
+        }
+        let timeout;
 
+        function closeBtn() {
+            timeout = setTimeout(ElModalBtn.classList.add("d-none"), 2000);
         }
 
         @foreach ($travels as $travel)
@@ -84,7 +111,7 @@
                 fillOpacity: 0.6,
                 radius: 5000
             }).addTo(map);
-            circle.bindPopup(openModal);
+            circle.bindPopup(openBtn);
         @endforeach
     </script>
 
@@ -92,3 +119,10 @@
 
     </html>
 @endsection
+
+
+
+
+
+
+>
